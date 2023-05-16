@@ -69,11 +69,12 @@ public class Persona extends UnicastRemoteObject implements IPersona{
     public void setTelefono(String telefono) throws RemoteException{
         this.telefono = telefono;
     }
+    
 
     @Override
     public String getString() throws RemoteException {
 
-        return String.format("Id: %d, Nombre: %s, Email: %s, Telefono: %s", getId(), getNombre(), getEmail(), getTelefono());
+        return String.format("Id: %d, Nombre: %s, Apellido Paterno: %s, Apellido Materno: %s, RFC: %s,  Email: %s, Telefono: %s", getId(), getNombre(), getApellidoPaterno(), getApellidoMaterno(), getRfc(),getEmail(), getTelefono());
     }
     
     public static IPersona fromMap(Map<String, Object> map ) throws RemoteException{
@@ -84,6 +85,16 @@ public class Persona extends UnicastRemoteObject implements IPersona{
             
             if(map.containsKey("Nombre"))
                 persona.setNombre( (String) map.get("Nombre"));
+            
+            if(map.containsKey("ApellidoPaterno"))
+                persona.setApellidoPaterno(((String) map.get("ApellidoPaterno")));
+            
+             if(map.containsKey("ApellidoMaterno"))
+                persona.setApellidoMaterno(((String) map.get("ApellidoMaterno")));
+             
+              if(map.containsKey("Rfc"))
+                persona.setRfc(((String) map.get("Rfc")));
+            
             
             if(map.containsKey("Telefono") && map.get("Telefono") != null)
                 persona.setTelefono((String) map.get("Telefono"));
@@ -102,6 +113,18 @@ public class Persona extends UnicastRemoteObject implements IPersona{
         if(persona.getNombre()!= null){
         datos.put("Nombre", persona.getNombre());
         }
+        if(persona.getApellidoPaterno() != null){
+        datos.put("ApellidoPaterno", persona.getApellidoPaterno());
+        }
+        
+        if(persona.getApellidoMaterno() != null){
+        datos.put("ApellidoMaterno", persona.getApellidoMaterno());
+        }
+        
+        if(persona.getRfc()!= null){
+        datos.put("Rfc", persona.getRfc());
+        }
+        
         if(persona.getTelefono()!= null){
         datos.put("Telefono", persona.getTelefono());
         }
@@ -114,32 +137,32 @@ public class Persona extends UnicastRemoteObject implements IPersona{
 
     @Override
     public String getRfc() throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return rfc;
     }
 
     @Override
-    public void setRfc() throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setRfc( String rfc) throws RemoteException {
+        this.rfc = rfc;
     }
 
     @Override
     public String getApellidoPaterno() throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return apellidoPaterno;
     }
 
     @Override
-    public void setApellidoPaterno() throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setApellidoPaterno(String apellido) throws RemoteException {
+        this.apellidoPaterno = apellido;
     }
 
     @Override
     public String getApellidoMaterno() throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return apellidoMaterno;
     }
 
     @Override
-    public void setApellidoMaterno() throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setApellidoMaterno(String apellido) throws RemoteException {
+        this.apellidoMaterno = apellido;
     }
     
     

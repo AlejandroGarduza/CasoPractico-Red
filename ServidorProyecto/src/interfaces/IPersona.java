@@ -21,12 +21,12 @@ public interface IPersona extends Remote {
     String getString() throws RemoteException;  
 
     String getRfc() throws RemoteException;
-    void setRfc() throws RemoteException;
+    void setRfc(String rfc) throws RemoteException;
     
     String getApellidoPaterno() throws RemoteException;
-    void setApellidoPaterno() throws RemoteException;
+    void setApellidoPaterno(String apellido) throws RemoteException;
     
     String getApellidoMaterno() throws RemoteException;
-    void setApellidoMaterno() throws RemoteException;
+    void setApellidoMaterno(String apellido) throws RemoteException;
     
 }
